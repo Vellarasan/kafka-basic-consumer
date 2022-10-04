@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    function:
+      definition: numberConsumer;consumeAndProcessSqrt;consumeAndProcessCube
+    stream:
+      bindings:
+        numberConsumer-in-0:
+          destination: numbers-topic
+
+        consumeAndProcessSqrt-in-0:
+          destination: numbers-topic
+        consumeAndProcessSqrt-out-0:
+          destination: sqrt-topic
+
+        consumeAndProcessCube-in-0:
+          destination: numbers-topic
+        consumeAndProcessCube-out-0:
+          destination: cube-topic
+
+      kafka:
+        binder:
+          brokers: localhost:9092
